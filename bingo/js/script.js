@@ -115,7 +115,7 @@ $(document).ready(function () {
 
   function initBingoCard() {
     var allBingoCards = _.range(1, config.buzzwordCount);
-    diff = allBingoCards.filter(function (x) {
+    var gdiff = allBingoCards.filter(function (x) {
       return userRejected.indexOf(x) < 0
     }); // Benuztzer abgewaehlte buzzwords vom array abziehen
 
