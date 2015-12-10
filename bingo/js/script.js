@@ -113,13 +113,16 @@ $(document).ready(function () {
     });
   }
 
+  function getAvailableCards() {
+    return allBingoCards.filter(function (card) {
+      return userRejected.indexOf(card) < 0;
+    });
+  }
+
   function initBingoCard() {
     var allBingoCards = _.range(1, config.buzzwordCount);
 
-    // Benutgzer abgewaehlte buzzwords vom array abziehen
-    var diff = allBingoCards.filter(function (card) {
-      return userRejected.indexOf(card) < 0;
-    });
+    var diff = getAvailableCards();
 
     // Mische alle Bingo-Karten außer die ausgeschlossenen und Teile alle Karten in Zwei-Teile auf
     var tmp = _.chunk(_.shuffle(diff), config.bingoCard.size - 1);
