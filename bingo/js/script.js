@@ -93,7 +93,9 @@ $(document).ready(function () {
 
     _.times(config.bingoCard.size, function (i) {
       var $cell = $('<td>');
-      if (i !== 24) {					// 24= Freifeld in der Mitte mit Freakshow Logo
+
+      // 24 = Freifeld in der Mitte mit Freakshow Logo
+      if (i !== 24) {
         $cell.attr('id', 'cell' + i);
       } else {
         $cell.attr('id', 'cell24');
