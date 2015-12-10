@@ -81,10 +81,10 @@ $(document).ready(function () {
 
 
   var wonBingos = new Array(77);
-  var UserRejected = new Array(23);
+  var userRejected = new Array(23);
   var totalScore = 0;
   var $bingoBody = $('#BingoBody');
-  var PlayMode = false;
+  var playMode = false;
 
   var model = {
     bingoCard: _.fill(new Array(config.bingoCard.size), false)
@@ -125,7 +125,7 @@ $(document).ready(function () {
   function initBingoCard() {
     var allBingoCards = _.range(1, config.buzzwordCount);
     diff = allBingoCards.filter(function (x) {
-      return UserRejected.indexOf(x) < 0
+      return userRejected.indexOf(x) < 0
     }); // Benuztzer abgewaehlte buzzwords vom array abziehen
 
     // Mische alle Bingo-Karten außer die ausgeschlossenen und Teile alle Karten in Zwei-Teile auf
@@ -141,13 +141,13 @@ $(document).ready(function () {
     $("#BingoBody td").removeClass('gruene_zelle');
     $("#BingoBody td").removeClass('rote_zelle');
     $("#BuzzwordsBody td").removeClass('rote_zelle');
-    setImgOnRejected('#missing', UserRejected);
+    setImgOnRejected('#missing', userRejected);
     wonBingos = [];
     model.bingoCard.length = 0;
   }
 
   function resetUserdata() {
-    UserRejected = [];
+    userRejected = [];
     UserRejectedNum = 0;
   }
 
@@ -195,7 +195,7 @@ $(document).ready(function () {
   function bindEventHandler() {
 
     $(document).keydown(function (evt) { // m Taste an mischen funktion binden
-      if (!PlayMode) {
+      if (!playMode) {
         if (evt.keyCode == 77) {
           evt.preventDefault();
           initBingoCard();
@@ -204,13 +204,13 @@ $(document).ready(function () {
     });
 
     $('#neueKarte').click(function () {
-      if (!PlayMode) {
+      if (!playMode) {
         initBingoCard();
       }
     });
 
     $('#reset').click(function () {
-      if (!PlayMode) {
+      if (!playMode) {
         UserRejectedNum = 0;
         resetUserdata();
         $("#BuzzwordsBody td").removeClass('rote_zelle');
@@ -218,7 +218,7 @@ $(document).ready(function () {
       }
     });
     $('#spielstart').click(function () {
-      PlayMode = true;
+      playMode = true;
       UserRejectedNum = 0;
       $('#score').html(pad(totalScore, 5));
       $('#modeindicator').html('<img src="images/spiel_laeuft.svg">');
@@ -239,8 +239,8 @@ $(document).ready(function () {
         $('#modeindicator').html('<img src="images/spiel_laeuft.svg">');
         UserRejectedNum = 0;
         initBingoCard();
-        UserRejected = [];
-        PlayMode = true;
+        userRejected = [];
+        playMode = true;
         $('#score').html(pad(totalScore, 4));
         $("#BuzzwordsBody td").removeClass('missing');
         $("#BuzzwordsBody td").removeClass('rote_zelle');
@@ -248,13 +248,13 @@ $(document).ready(function () {
         $("#BingoBody td").removeClass('rote_zelle');
 
       } else {
-        if (!PlayMode) {
+        if (!playMode) {
           var idx = parseInt($(this).attr('data-img-id'));	// idx = integerwert der geklickten zelle
           if (idx != 0) {				// Frei Logo nicht ausschliessbar machen
             $(this).addClass("rote_zelle");
-            if (isNaN(idx) || $.inArray(idx, UserRejected) != -1) {
+            if (isNaN(idx) || $.inArray(idx, userRejected) != -1) {
             } else {
-              UserRejected[UserRejectedNum] = idx;
+              userRejected[UserRejectedNum] = idx;
               UserRejectedNum++;
               console.log(UserRejectedNum);
             }
@@ -279,20 +279,20 @@ $(document).ready(function () {
         $('#modeindicator').html('<img src="images/spiel_laeuft.svg">');
         UserRejectedNum = 0;
         initBingoCard();
-        UserRejected = [];
-        PlayMode = true;
+        userRejected = [];
+        playMode = true;
         $('#score').html(pad(totalScore, 5));
         $("#BuzzwordsBody td").removeClass('missing');
         $("#BuzzwordsBody td").removeClass('rote_zelle');
         $("#BingoBody td").removeClass('missing');
         $("#BingoBody td").removeClass('rote_zelle');
       } else {
-        if (!PlayMode) {
+        if (!playMode) {
           $(this).addClass("rote_zelle");
           var idx = parseInt($(this).attr('data-img-id'));	// idx = integerwert der geklickten zelle
-          if (isNaN(idx) || $.inArray(idx, UserRejected) != -1) {
+          if (isNaN(idx) || $.inArray(idx, userRejected) != -1) {
           } else {
-            UserRejected[UserRejectedNum] = idx;
+            userRejected[UserRejectedNum] = idx;
             UserRejectedNum++;
             console.log(UserRejectedNum);
           }
