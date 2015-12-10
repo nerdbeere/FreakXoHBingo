@@ -88,10 +88,6 @@ $(document).ready(function () {
     "Apfel": [4, 10, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 36, 37, 38, 39, 40, 44, 46]
   };
 
-  createBingoCard();
-  bindEventHandler();
-  initBingoCard();
-
   function createBingoCard() {
     var $row = $('<tr>');
 
@@ -338,6 +334,10 @@ $(document).ready(function () {
       }
     });
   }
+
+  createBingoCard();
+  bindEventHandler();
+  initBingoCard();
 
 //  function resizeTiles(tileSize) {
 //    $('div.resize img').width(tileSize).height(tileSize);
