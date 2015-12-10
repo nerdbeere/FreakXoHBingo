@@ -116,7 +116,7 @@ $(document).ready(function () {
   function initBingoCard() {
     var allBingoCards = _.range(1, config.buzzwordCount);
     var diff = allBingoCards.filter(function (card) {
-      return userRejected.indexOf(card) < 0
+      return userRejected.indexOf(card) < 0;g
     }); // Benuztzer abgewaehlte buzzwords vom array abziehen
 
     // Mische alle Bingo-Karten außer die ausgeschlossenen und Teile alle Karten in Zwei-Teile auf
