@@ -5,10 +5,6 @@ $(document).ready(function () {
   var $bingoBody = $('#BingoBody');
   var playMode = false;
 
-  var model = {
-    bingoCard: _.fill(new Array(config.bingoCard.size), false)
-  };
-
   var config = {
     bingoCard: {
       width: 7,
@@ -16,6 +12,10 @@ $(document).ready(function () {
       size: 49,
     },
     buzzwordCount: 73 	// Anzahl der Buzzwords +1...
+  };
+
+  var model = {
+    bingoCard: _.fill(new Array(config.bingoCard.size), false)
   };
 
   var winBoards = {
