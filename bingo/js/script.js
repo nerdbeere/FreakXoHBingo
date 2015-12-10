@@ -18,7 +18,7 @@ $(document).ready(function () {
     buzzwordCount: 73 	// Anzahl der Buzzwords +1...
   };
 
-  var WinBoards = {
+  var winBoards = {
     "Horizontal 1": [0, 1, 2, 3, 4, 5, 6],
     "Horizontal 2": [7, 8, 9, 10, 11, 12, 13],
     "Horizontal 3": [14, 15, 16, 17, 18, 19, 20],
@@ -323,13 +323,13 @@ $(document).ready(function () {
     console.log(convertedToNum);
     var i = 1;
     totalScore = 0;
-    $.each(WinBoards, function (key, value) {
+    $.each(winBoards, function (key, value) {
       if (containsAll(value, convertedToNum)) {
         wonBingos[i] = key;
         $('#result' + i).html(key + ' ' + value.length * 10 + ' punkte');
         totalScore = (totalScore + value.length * 10);
 
-        $.each(WinBoards, function (key, value) {
+        $.each(winBoards, function (key, value) {
 
           if (containsAll(value, convertedToNum)) {
             for (var j = 0; j < value.length;) {
