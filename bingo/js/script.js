@@ -115,9 +115,11 @@ $(document).ready(function () {
 
   function initBingoCard() {
     var allBingoCards = _.range(1, config.buzzwordCount);
+
+    // Benutgzer abgewaehlte buzzwords vom array abziehen
     var diff = allBingoCards.filter(function (card) {
       return userRejected.indexOf(card) < 0;
-    }); // Benuztzer abgewaehlte buzzwords vom array abziehen
+    });
 
     // Mische alle Bingo-Karten außer die ausgeschlossenen und Teile alle Karten in Zwei-Teile auf
     var tmp = _.chunk(_.shuffle(diff), config.bingoCard.size - 1);
