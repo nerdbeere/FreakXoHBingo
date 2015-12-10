@@ -114,14 +114,13 @@ $(document).ready(function () {
   }
 
   function getAvailableCards() {
+    var allBingoCards = _.range(1, config.buzzwordCount);
     return allBingoCards.filter(function (card) {
       return userRejected.indexOf(card) < 0;
     });
   }
 
   function initBingoCard() {
-    var allBingoCards = _.range(1, config.buzzwordCount);
-
     var diff = getAvailableCards();
 
     // Mische alle Bingo-Karten außer die ausgeschlossenen und Teile alle Karten in Zwei-Teile auf
