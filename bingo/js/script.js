@@ -7,7 +7,7 @@ $(document).ready(function () {
 
   var model = {
     bingoCard: _.fill(new Array(config.bingoCard.size), false)
-  };g
+  };
 
   var config = {
     bingoCard: {
