@@ -88,13 +88,9 @@ $(document).ready(function () {
     "Apfel": [4, 10, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 36, 37, 38, 39, 40, 44, 46]
   };
 
-  init();
-
-  function init() {
-    createBingoCard();
-    bindEventHandler();
-    initBingoCard();
-  }
+  createBingoCard();
+  bindEventHandler();
+  initBingoCard();
 
   function createBingoCard() {
     var $row = $('<tr>');
